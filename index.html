@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Medical Gardening Guide - Mint, Ginger, Aloe Vera & More</title>
-  <meta name="description" content="A comprehensive, scientifically-backed guide to medicinal gardening. Detailed care, uses, timelines, recipes, and proven health benefits for mint, ginger, aloe vera, turmeric, lavender, chamomile, echinacea, garlic, and many more." />
-  <meta name="keywords" content="medicinal gardening, herbal medicine, mint, ginger, aloe vera, turmeric, lavender, chamomile, echinacea, garlic, plant care, herbal remedies" />
+  <title>Medical Gardening Guide - Mint, Ginger & Aloe Vera</title>
+  <meta name="description" content="A comprehensive guide to medicinal gardening focused on mint, ginger, aloe vera, and more. Learn plant care, uses, recipes, and scientific references." />
+  <meta name="keywords" content="medicinal gardening, mint, ginger, aloe vera, herbal plants, plant care, medicinal plants, home remedies" />
   <meta name="author" content="Nitish Vankina" />
   <style>
     body {
@@ -13,8 +13,7 @@
       margin: 0; padding: 0;
       background-color: #f7f7f7;
       color: #333;
-      line-height: 1.7;
-      scroll-behavior: smooth;
+      line-height: 1.6;
     }
     header {
       background-color: #222;
@@ -27,83 +26,86 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      user-select: none;
     }
     header h1 {
       margin: 0;
-      font-size: 1.9rem;
-      font-weight: 900;
-      letter-spacing: 1px;
+      font-size: 1.8rem;
     }
     nav {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      align-items: center;
+      position: relative;
     }
-    nav button, nav .dropdown {
+    nav button.tab-btn {
       background: none;
       border: none;
       color: white;
-      font-weight: 700;
+      font-weight: bold;
       font-size: 1rem;
-      padding: 0.6rem 1rem;
+      padding: 0.5rem 1rem;
       cursor: pointer;
       border-bottom: 3px solid transparent;
       transition: border-color 0.3s, color 0.3s;
-      position: relative;
     }
-    nav button:hover,
-    nav button.active,
-    nav .dropdown:hover > button {
+    nav button.tab-btn:hover,
+    nav button.tab-btn.active {
       color: #00ffb3;
       border-color: #00ffb3;
     }
-    nav .dropdown-content {
+    /* Dropdown styling */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .more-btn {
+      position: relative;
+      user-select: none;
+    }
+    .dropdown-menu {
       display: none;
       position: absolute;
-      background-color: #333;
-      min-width: 200px;
-      top: 100%;
-      left: 0;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      z-index: 1500;
-      max-height: 300px;
-      overflow-y: auto;
+      background-color: #222;
+      min-width: 180px;
+      z-index: 1001;
+      margin-top: 0.3rem;
+      border-radius: 0.3rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      padding: 0;
+      list-style: none;
     }
-    nav .dropdown-content button {
+    .dropdown-menu.show {
       display: block;
-      width: 100%;
+    }
+    .dropdown-item {
+      color: white;
+      padding: 0.5rem 1rem;
       text-align: left;
-      padding: 0.6rem 1rem;
+      background: none;
       border: none;
-      background: #333;
-      color: white;
-      font-weight: 500;
-      font-size: 0.9rem;
-      border-bottom: 1px solid #444;
+      width: 100%;
       cursor: pointer;
+      font-weight: normal;
+      font-size: 0.95rem;
       transition: background-color 0.3s;
-    }
-    nav .dropdown-content button:hover {
-      background-color: #00b386;
-      color: white;
-    }
-    nav .dropdown:hover .dropdown-content {
       display: block;
+    }
+    .dropdown-item:hover,
+    .dropdown-item:focus,
+    .dropdown-item.active {
+      background-color: #00b386;
+      outline: none;
     }
     main {
       max-width: 900px;
-      margin: 2rem auto 4rem auto;
+      margin: 2rem auto;
       background: white;
       border-radius: 0.6rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-      padding: 2rem 3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
     }
     section.plant-section {
       display: none;
-      animation: fadeIn 0.5s ease-in-out forwards;
     }
     section.plant-section.active {
       display: block;
@@ -111,139 +113,83 @@
     h2 {
       border-bottom: 3px solid #00b386;
       padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       color: #007a53;
-      font-weight: 900;
-      font-size: 2rem;
-      letter-spacing: 0.8px;
     }
     h3 {
       color: #007a53;
-      margin-top: 2rem;
-      font-weight: 700;
-      font-size: 1.4rem;
+      margin-top: 1.5rem;
     }
     ul {
       list-style-type: disc;
-      padding-left: 1.8rem;
-      margin-bottom: 1.8rem;
+      padding-left: 1.5rem;
     }
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-    a.source-link {
-      font-weight: 600;
-      color: #007a53;
-      text-decoration: underline;
-      font-size: 0.95rem;
-    }
-    a.source-link:hover {
-      color: #004d40;
-    }
-    /* Quiz Styles */
+    /* Quiz styles */
     .quiz {
-      margin-top: 3rem;
+      margin-top: 2rem;
       background: #e8f5f2;
-      padding: 2rem;
-      border-radius: 0.6rem;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
       border: 1px solid #a3d9cc;
-      box-shadow: inset 0 0 10px #c9e7df;
     }
     .question {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       background: #f0fdf9;
-      border-left: 6px solid #00b386;
-      padding: 1rem 1.5rem;
-      border-radius: 0.4rem;
-      font-weight: 600;
-      color: #004d40;
-      font-size: 1.1rem;
+      border-left: 5px solid #00b386;
+      padding: 1rem 1.2rem;
+      border-radius: 0.3rem;
+    }
+    input[type="radio"] {
+      margin-right: 0.6rem;
+      cursor: pointer;
     }
     label {
       cursor: pointer;
       display: block;
-      margin: 0.6rem 0;
+      margin-bottom: 0.4rem;
       font-size: 1rem;
-      font-weight: 500;
-      color: #006644;
-    }
-    input[type="radio"] {
-      margin-right: 0.7rem;
-      cursor: pointer;
-      transform: scale(1.1);
-      vertical-align: middle;
     }
     button.submit-btn {
       background-color: #00b386;
       color: white;
       border: none;
-      border-radius: 0.4rem;
-      padding: 0.8rem 1.5rem;
-      font-size: 1.1rem;
+      border-radius: 0.3rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
       cursor: pointer;
-      font-weight: 700;
       transition: background-color 0.3s;
-      margin-top: 1rem;
-      box-shadow: 0 4px 10px #009765;
     }
     button.submit-btn:hover {
       background-color: #008f6b;
-      box-shadow: 0 6px 14px #006d4f;
     }
     .quiz-result {
-      font-weight: 700;
-      margin-top: 1.2rem;
-      padding: 1.2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      padding: 1rem;
       background-color: #d4edda;
       color: #155724;
-      border-radius: 0.5rem;
+      border-radius: 0.3rem;
       display: none;
-      font-size: 1.1rem;
-      border: 2px solid #a3cfbb;
     }
-    /* Footer */
     footer {
       text-align: center;
       background-color: #222;
       color: white;
-      padding: 1rem 0;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      user-select: none;
-      border-top: 3px solid #00b386;
-      margin-top: 4rem;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
     }
-    /* Animations */
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    /* Scrollbar for dropdown */
-    nav .dropdown-content::-webkit-scrollbar {
-      width: 8px;
-    }
-    nav .dropdown-content::-webkit-scrollbar-track {
-      background: #2e2e2e;
-      border-radius: 0 0 8px 8px;
-    }
-    nav .dropdown-content::-webkit-scrollbar-thumb {
-      background: #00b386;
-      border-radius: 8px;
-    }
-    /* Responsive tweaks */
-    @media (max-width: 700px) {
-      main {
-        padding: 1.5rem 1.8rem;
-        margin: 1rem auto 3rem auto;
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        justify-content: center;
       }
-      header h1 {
-        font-size: 1.6rem;
-      }
-      nav button, nav .dropdown button {
+      nav button.tab-btn {
         font-size: 0.9rem;
-        padding: 0.5rem 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+      .dropdown-menu {
+        min-width: 140px;
       }
     }
   </style>
@@ -252,38 +198,25 @@
   <header>
     <h1>Medical Gardening Guide</h1>
     <nav aria-label="Primary">
-      <button class="tab-btn active" aria-controls="mint" aria-selected="true" role="tab" id="mint-tab">Mint</button>
-      <button class="tab-btn" aria-controls="ginger" aria-selected="false" role="tab" id="ginger-tab">Ginger</button>
-      <button class="tab-btn" aria-controls="aloe" aria-selected="false" role="tab" id="aloe-tab">Aloe Vera</button>
-      <div class="dropdown" role="presentation" aria-haspopup="true">
-        <button aria-expanded="false" aria-controls="more-plants-list" id="more-plants-btn" tabindex="0">More Plants ▼</button>
-        <div id="more-plants-list" class="dropdown-content" role="menu" aria-labelledby="more-plants-btn" tabindex="-1">
-          <!-- We'll add many plants here -->
-          <button role="menuitem" data-target="turmeric">Turmeric (Curcuma longa)</button>
-          <button role="menuitem" data-target="lavender">Lavender (Lavandula angustifolia)</button>
-          <button role="menuitem" data-target="chamomile">Chamomile (Matricaria chamomilla)</button>
-          <button role="menuitem" data-target="echinacea">Echinacea (Echinacea purpurea)</button>
-          <button role="menuitem" data-target="garlic">Garlic (Allium sativum)</button>
-          <button role="menuitem" data-target="peppermint">Peppermint (Mentha piperita)</button>
-          <button role="menuitem" data-target="lemonbalm">Lemon Balm (Melissa officinalis)</button>
-          <button role="menuitem" data-target="calendula">Calendula (Calendula officinalis)</button>
-          <button role="menuitem" data-target="oregano">Oregano (Origanum vulgare)</button>
-          <button role="menuitem" data-target="thyme">Thyme (Thymus vulgaris)</button>
-          <button role="menuitem" data-target="rosemary">Rosemary (Rosmarinus officinalis)</button>
-          <button role="menuitem" data-target="holybasin">Holy Basil (Ocimum sanctum)</button>
-          <button role="menuitem" data-target="ginseng">Ginseng (Panax ginseng)</button>
-          <button role="menuitem" data-target="valerian">Valerian (Valeriana officinalis)</button>
-          <button role="menuitem" data-target="stjohnswort">St. John's Wort (Hypericum perforatum)</button>
-          <button role="menuitem" data-target="echinacea">Echinacea (Echinacea purpurea)</button>
-          <button role="menuitem" data-target="milkthistle">Milk Thistle (Silybum marianum)</button>
-          <button role="menuitem" data-target="peppermint">Peppermint (Mentha piperita)</button>
-          <button role="menuitem" data-target="chamomile">Chamomile (Matricaria chamomilla)</button>
-          <button role="menuitem" data-target="ginkgo">Ginkgo Biloba (Ginkgo biloba)</button>
-          <button role="menuitem" data-target="ashwagandha">Ashwagandha (Withania somnifera)</button>
-          <button role="menuitem" data-target="echinacea">Echinacea (Echinacea purpurea)</button>
-          <button role="menuitem" data-target="lavender">Lavender (Lavandula angustifolia)</button>
-          <!-- Add more plants as needed -->
-        </div>
+      <button class="tab-btn active" aria-controls="mint" aria-selected="true" role="tab" id="mint-tab" data-plant="mint">Mint</button>
+      <button class="tab-btn" aria-controls="ginger" aria-selected="false" role="tab" id="ginger-tab" data-plant="ginger">Ginger</button>
+      <button class="tab-btn" aria-controls="aloe" aria-selected="false" role="tab" id="aloe-tab" data-plant="aloe">Aloe Vera</button>
+
+      <div class="dropdown">
+        <button class="tab-btn more-btn" aria-haspopup="true" aria-expanded="false" aria-controls="more-plants-list" id="more-plants-tab" type="button">
+          More Plants ▼
+        </button>
+        <ul class="dropdown-menu" id="more-plants-list" role="menu" aria-labelledby="more-plants-tab">
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="lavender" type="button">Lavender</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="chamomile" type="button">Chamomile</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="echinacea" type="button">Echinacea</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="calendula" type="button">Calendula</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="peppermint" type="button">Peppermint</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="thyme" type="button">Thyme</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="rosemary" type="button">Rosemary</button></li>
+          <li role="none"><button class="dropdown-item" role="menuitem" data-plant="garlic" type="button">Garlic</button></li>
+          <!-- Add more plants here as needed -->
+        </ul>
       </div>
     </nav>
   </header>
@@ -293,25 +226,15 @@
     <section id="mint" class="plant-section active" role="tabpanel" aria-labelledby="mint-tab" tabindex="0">
       <h2>Mint (Mentha)</h2>
       <h3>Overview</h3>
-      <p>
-        Mint is a widely used medicinal herb known for its soothing effects on digestion and nausea. The most common types are spearmint and peppermint.
-        Mint contains menthol, which provides a cooling sensation and aids in relieving stomach cramps and indigestion.
-      </p>
+      <p>Mint is a widely used medicinal herb known for its soothing effects on digestion and nausea. It grows well in containers and gardens, and is commonly used in teas, culinary dishes, and essential oils.</p>
       <h3>Plant Care</h3>
       <ul>
         <li>Prefers partial shade and moist, well-drained soil.</li>
         <li>Water regularly but avoid overwatering to prevent root rot.</li>
         <li>Prune frequently to encourage bushier, healthier growth.</li>
-        <li>Grow in containers to prevent invasive spreading.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
       <p><strong>Mint Tea:</strong> Steep fresh mint leaves in hot water for 5-7 minutes. Drink after meals to aid digestion and relieve bloating.</p>
-      <h3>Scientific Benefits</h3>
-      <ul>
-        <li>Mint has demonstrated anti-inflammatory and antioxidant effects in various studies.</li>
-        <li>Menthol in mint helps relax the gastrointestinal tract muscles, easing IBS symptoms. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4749010/" target="_blank" class="source-link">[1]</a></li>
-        <li>Studies show peppermint oil reduces abdominal pain and discomfort in IBS patients. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6942031/" target="_blank" class="source-link">[2]</a></li>
-      </ul>
       <h3>Growing Timeline</h3>
       <ul>
         <li>Week 1: Plant mint cuttings or seeds in container or garden.</li>
@@ -319,31 +242,26 @@
         <li>Week 6: Leaves grow bushy and can be harvested.</li>
         <li>Week 8 and beyond: Regular harvesting for fresh use.</li>
       </ul>
+      <h3>Scientific Sources</h3>
+      <ul>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5871204/" target="_blank" rel="noopener noreferrer">Mint & Digestive Health - NCBI</a></li>
+        <li><a href="https://www.webmd.com/vitamins/ai/ingredientmono-139/mint" target="_blank" rel="noopener noreferrer">Mint Uses - WebMD</a></li>
+      </ul>
     </section>
 
     <!-- Ginger -->
     <section id="ginger" class="plant-section" role="tabpanel" aria-labelledby="ginger-tab" tabindex="0">
       <h2>Ginger (Zingiber officinale)</h2>
       <h3>Overview</h3>
-      <p>
-        Ginger is a medicinal rhizome widely used for its anti-inflammatory, anti-nausea, and digestive benefits.
-        It contains bioactive compounds like gingerol, which contribute to these effects.
-      </p>
+      <p>Ginger is a popular medicinal rhizome used worldwide for its anti-inflammatory and digestive properties. It can be grown indoors or outdoors in warm, humid environments.</p>
       <h3>Plant Care</h3>
       <ul>
         <li>Thrives in warm, humid conditions with indirect sunlight.</li>
-        <li>Plant rhizomes horizontally about 2 inches deep in loose, rich soil.</li>
+        <li>Plant rhizomes horizontally about 2 inches deep in loose soil.</li>
         <li>Keep soil moist but not soggy to avoid rot.</li>
-        <li>Mulch and protect from cold temperatures.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
       <p><strong>Ginger Infusion:</strong> Boil sliced fresh ginger in water for 10 minutes. Drink before meals to reduce nausea and inflammation.</p>
-      <h3>Scientific Benefits</h3>
-      <ul>
-        <li>Ginger reduces nausea and vomiting related to pregnancy and chemotherapy. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6341159/" target="_blank" class="source-link">[3]</a></li>
-        <li>Anti-inflammatory properties may reduce osteoarthritis pain. <a href="https://pubmed.ncbi.nlm.nih.gov/17569207/" target="_blank" class="source-link">[4]</a></li>
-        <li>May improve blood sugar regulation and heart health markers. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3665023/" target="_blank" class="source-link">[5]</a></li>
-      </ul>
       <h3>Growing Timeline</h3>
       <ul>
         <li>Week 1: Plant ginger rhizomes in suitable potting soil.</li>
@@ -351,31 +269,26 @@
         <li>Week 6: Leaves develop and grow larger.</li>
         <li>Week 8-10: Rhizomes mature and ready for harvest.</li>
       </ul>
+      <h3>Scientific Sources</h3>
+      <ul>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3665023/" target="_blank" rel="noopener noreferrer">Anti-inflammatory properties of ginger - NCBI</a></li>
+        <li><a href="https://www.webmd.com/diet/health-benefits-ginger" target="_blank" rel="noopener noreferrer">Ginger Uses - WebMD</a></li>
+      </ul>
     </section>
 
     <!-- Aloe Vera -->
     <section id="aloe" class="plant-section" role="tabpanel" aria-labelledby="aloe-tab" tabindex="0">
       <h2>Aloe Vera (Aloe barbadensis miller)</h2>
       <h3>Overview</h3>
-      <p>
-        Aloe vera is a succulent plant famed for its skin healing gel. It has anti-inflammatory, antimicrobial, and wound healing properties.
-        It is drought-tolerant and grows well indoors.
-      </p>
+      <p>Aloe vera is a succulent plant famous for its skin healing gel. It's easy to grow indoors and is drought-tolerant.</p>
       <h3>Plant Care</h3>
       <ul>
         <li>Requires bright, indirect sunlight.</li>
         <li>Use well-draining cactus or succulent soil.</li>
         <li>Water sparingly, allowing soil to dry completely between waterings.</li>
-        <li>Avoid overwatering to prevent root rot.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
       <p><strong>Aloe Vera Gel:</strong> Cut a thick leaf, scoop out the gel, and apply topically to minor burns and skin irritations to soothe and promote healing.</p>
-      <h3>Scientific Benefits</h3>
-      <ul>
-        <li>Aloe vera gel has been shown to accelerate wound healing and reduce skin inflammation. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2763764/" target="_blank" class="source-link">[6]</a></li>
-        <li>Contains antioxidants like vitamins C and E that protect skin cells.</li>
-        <li>May improve glycemic control in type 2 diabetes patients. <a href="https://pubmed.ncbi.nlm.nih.gov/22280204/" target="_blank" class="source-link">[7]</a></li>
-      </ul>
       <h3>Growing Timeline</h3>
       <ul>
         <li>Week 1: Plant leaf cutting or young aloe plant in well-drained soil.</li>
@@ -383,273 +296,315 @@
         <li>Week 8: New shoots or leaves emerge.</li>
         <li>Ongoing: Harvest leaves carefully without damaging the plant.</li>
       </ul>
-    </section>
-
-    <!-- More Plants Sections -->
-    <!-- Turmeric -->
-    <section id="turmeric" class="plant-section" role="tabpanel" tabindex="0" aria-hidden="true">
-      <h2>Turmeric (Curcuma longa)</h2>
-      <h3>Overview</h3>
-      <p>
-        Turmeric is a rhizome known for its bright yellow color and curcumin content. It is widely used as an anti-inflammatory and antioxidant.
-      </p>
-      <h3>Plant Care</h3>
+      <h3>Scientific Sources</h3>
       <ul>
-        <li>Grows best in warm, humid climates.</li>
-        <li>Requires rich, well-drained soil and partial shade.</li>
-        <li>Needs plenty of water during growth but well-drained conditions.</li>
-      </ul>
-      <h3>Medicinal Uses & Recipes</h3>
-      <p><strong>Turmeric Golden Milk:</strong> Mix turmeric powder with milk, black pepper, and honey. Drink to reduce inflammation and boost immunity.</p>
-      <h3>Scientific Benefits</h3>
-      <ul>
-        <li>Curcumin exhibits strong anti-inflammatory properties. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5664031/" target="_blank" class="source-link">[8]</a></li>
-        <li>May reduce symptoms of arthritis and improve joint function. <a href="https://pubmed.ncbi.nlm.nih.gov/17569207/" target="_blank" class="source-link">[9]</a></li>
-        <li>Antioxidant effects may protect against chronic diseases. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3535097/" target="_blank" class="source-link">[10]</a></li>
-      </ul>
-      <h3>Growing Timeline</h3>
-      <ul>
-        <li>Week 1: Plant turmeric rhizomes in warm, loose soil.</li>
-        <li>Week 3-4: Shoots emerge.</li>
-        <li>Week 8-10: Leaves grow and expand.</li>
-        <li>Week 20-24: Rhizomes mature for harvest.</li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2763764/" target="_blank" rel="noopener noreferrer">Aloe Vera for wound healing - NCBI</a></li>
+        <li><a href="https://www.webmd.com/vitamins/ai/ingredientmono-599/aloe" target="_blank" rel="noopener noreferrer">Aloe Vera Uses - WebMD</a></li>
       </ul>
     </section>
 
-    <!-- Lavender -->
-    <section id="lavender" class="plant-section" role="tabpanel" tabindex="0" aria-hidden="true">
+    <!-- Additional plants sections (empty placeholders) -->
+    <section id="lavender" class="plant-section" role="tabpanel" tabindex="0" aria-label="Lavender">
       <h2>Lavender (Lavandula angustifolia)</h2>
       <h3>Overview</h3>
-      <p>
-        Lavender is an aromatic shrub known for its calming scent and essential oils used in aromatherapy and sleep aids.
-      </p>
+      <p>Lavender is well-known for its calming effects and is used in aromatherapy and topical applications.</p>
       <h3>Plant Care</h3>
       <ul>
-        <li>Requires full sun and well-drained, slightly alkaline soil.</li>
-        <li>Does not like overwatering; water sparingly.</li>
-        <li>Prune yearly to maintain shape and encourage blooms.</li>
+        <li>Needs full sun and well-drained soil.</li>
+        <li>Water moderately; drought tolerant once established.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
-      <p><strong>Lavender Tea:</strong> Steep dried lavender buds to promote relaxation and reduce anxiety.</p>
-      <h3>Scientific Benefits</h3>
+      <p>Use dried lavender in teas or essential oils for relaxation and anxiety relief.</p>
+      <h3>Scientific Sources</h3>
       <ul>
-        <li>Lavender aromatherapy reduces anxiety and improves sleep quality. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3612440/" target="_blank" class="source-link">[11]</a></li>
-        <li>Contains compounds with antimicrobial and anti-inflammatory effects.</li>
-      </ul>
-      <h3>Growing Timeline</h3>
-      <ul>
-        <li>Week 1: Plant lavender seeds or cuttings in well-drained soil.</li>
-        <li>Week 4-5: Seedlings emerge.</li>
-        <li>Week 12: Begin first pruning for shape.</li>
-        <li>Ongoing: Harvest flowers for use.</li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3612440/" target="_blank" rel="noopener noreferrer">Lavender for anxiety - NCBI</a></li>
       </ul>
     </section>
 
-    <!-- Chamomile -->
-    <section id="chamomile" class="plant-section" role="tabpanel" tabindex="0" aria-hidden="true">
+    <section id="chamomile" class="plant-section" role="tabpanel" tabindex="0" aria-label="Chamomile">
       <h2>Chamomile (Matricaria chamomilla)</h2>
       <h3>Overview</h3>
-      <p>
-        Chamomile is a daisy-like herb popular for its calming effects and digestive benefits. It is commonly used in teas.
-      </p>
+      <p>Chamomile is widely used for its calming effects and as a digestive aid.</p>
       <h3>Plant Care</h3>
       <ul>
         <li>Prefers full sun to partial shade.</li>
-        <li>Well-drained soil with moderate watering.</li>
-        <li>Harvest flowers before full bloom for best flavor.</li>
+        <li>Water regularly but allow soil to dry between waterings.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
-      <p><strong>Chamomile Tea:</strong> Brew dried chamomile flowers to reduce anxiety, aid sleep, and soothe stomach issues.</p>
-      <h3>Scientific Benefits</h3>
+      <p>Chamomile tea is popular for relaxation and sleep aid.</p>
+      <h3>Scientific Sources</h3>
       <ul>
-        <li>Chamomile has mild sedative effects helping reduce insomnia. <a href="https://pubmed.ncbi.nlm.nih.gov/25056518/" target="_blank" class="source-link">[12]</a></li>
-        <li>Anti-inflammatory properties help with digestive and skin issues.</li>
-      </ul>
-      <h3>Growing Timeline</h3>
-      <ul>
-        <li>Week 1: Sow chamomile seeds in well-prepared soil.</li>
-        <li>Week 2-3: Seedlings appear.</li>
-        <li>Week 6: Flowers develop and bloom.</li>
-        <li>Ongoing: Harvest flowers regularly.</li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2995283/" target="_blank" rel="noopener noreferrer">Chamomile for anxiety and sleep - NCBI</a></li>
       </ul>
     </section>
 
-    <!-- Echinacea -->
-    <section id="echinacea" class="plant-section" role="tabpanel" tabindex="0" aria-hidden="true">
+    <section id="echinacea" class="plant-section" role="tabpanel" tabindex="0" aria-label="Echinacea">
       <h2>Echinacea (Echinacea purpurea)</h2>
       <h3>Overview</h3>
-      <p>
-        Echinacea is a flowering plant commonly used to boost the immune system and reduce cold symptoms.
-      </p>
+      <p>Echinacea is popular for its immune-boosting properties, especially to help prevent colds.</p>
       <h3>Plant Care</h3>
       <ul>
-        <li>Full sun preferred; tolerates partial shade.</li>
-        <li>Well-drained soil; drought tolerant once established.</li>
-        <li>Deadhead flowers to encourage prolonged blooming.</li>
+        <li>Prefers full sun and well-drained soil.</li>
+        <li>Water moderately; drought tolerant.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
-      <p><strong>Echinacea Tea:</strong> Brew dried roots or flowers to stimulate immune function during cold and flu seasons.</p>
-      <h3>Scientific Benefits</h3>
+      <p>Used in teas or supplements to stimulate the immune system.</p>
+      <h3>Scientific Sources</h3>
       <ul>
-        <li>Echinacea reduces severity and duration of colds in some clinical trials. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4058676/" target="_blank" class="source-link">[13]</a></li>
-        <li>Stimulates immune cell activity and has anti-inflammatory properties.</li>
-      </ul>
-      <h3>Growing Timeline</h3>
-      <ul>
-        <li>Week 1: Sow seeds in well-drained soil.</li>
-        <li>Week 3-4: Germination and seedlings emerge.</li>
-        <li>Week 8: Plants flower.</li>
-        <li>Ongoing: Harvest flowers and roots carefully.</li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4058676/" target="_blank" rel="noopener noreferrer">Echinacea for colds - NCBI</a></li>
       </ul>
     </section>
 
-    <!-- Garlic -->
-    <section id="garlic" class="plant-section" role="tabpanel" tabindex="0" aria-hidden="true">
+    <section id="calendula" class="plant-section" role="tabpanel" tabindex="0" aria-label="Calendula">
+      <h2>Calendula (Calendula officinalis)</h2>
+      <h3>Overview</h3>
+      <p>Calendula is used for skin healing and anti-inflammatory effects.</p>
+      <h3>Plant Care</h3>
+      <ul>
+        <li>Prefers full sun and well-drained soil.</li>
+        <li>Water regularly.</li>
+      </ul>
+      <h3>Medicinal Uses & Recipes</h3>
+      <p>Applied topically for cuts, wounds, and rashes.</p>
+      <h3>Scientific Sources</h3>
+      <ul>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4151233/" target="_blank" rel="noopener noreferrer">Calendula for wound healing - NCBI</a></li>
+      </ul>
+    </section>
+
+    <section id="peppermint" class="plant-section" role="tabpanel" tabindex="0" aria-label="Peppermint">
+      <h2>Peppermint (Mentha × piperita)</h2>
+      <h3>Overview</h3>
+      <p>Peppermint is used for digestive health and relief of irritable bowel symptoms.</p>
+      <h3>Plant Care</h3>
+      <ul>
+        <li>Partial shade, moist soil.</li>
+        <li>Water regularly, avoid waterlogging.</li>
+      </ul>
+      <h3>Medicinal Uses & Recipes</h3>
+      <p>Peppermint tea aids digestion and soothes stomach aches.</p>
+      <h3>Scientific Sources</h3>
+      <ul>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1785201/" target="_blank" rel="noopener noreferrer">Peppermint for IBS - NCBI</a></li>
+      </ul>
+    </section>
+
+    <section id="thyme" class="plant-section" role="tabpanel" tabindex="0" aria-label="Thyme">
+      <h2>Thyme (Thymus vulgaris)</h2>
+      <h3>Overview</h3>
+      <p>Thyme is valued for antimicrobial and respiratory benefits.</p>
+      <h3>Plant Care</h3>
+      <ul>
+        <li>Full sun, well-drained soil.</li>
+        <li>Water moderately.</li>
+      </ul>
+      <h3>Medicinal Uses & Recipes</h3>
+      <p>Used in teas and steam inhalations for cough and bronchitis.</p>
+      <h3>Scientific Sources</h3>
+      <ul>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5366846/" target="_blank" rel="noopener noreferrer">Thyme antimicrobial properties - NCBI</a></li>
+      </ul>
+    </section>
+
+    <section id="rosemary" class="plant-section" role="tabpanel" tabindex="0" aria-label="Rosemary">
+      <h2>Rosemary (Rosmarinus officinalis)</h2>
+      <h3>Overview</h3>
+      <p>Rosemary is known for improving memory and concentration, and as an antioxidant.</p>
+      <h3>Plant Care</h3>
+      <ul>
+        <li>Full sun, well-drained soil.</li>
+        <li>Water moderately but avoid overwatering.</li>
+      </ul>
+      <h3>Medicinal Uses & Recipes</h3>
+      <p>Used in teas or essential oils to boost cognitive function.</p>
+      <h3>Scientific Sources</h3>
+      <ul>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4910572/" target="_blank" rel="noopener noreferrer">Rosemary & memory - NCBI</a></li>
+      </ul>
+    </section>
+
+    <section id="garlic" class="plant-section" role="tabpanel" tabindex="0" aria-label="Garlic">
       <h2>Garlic (Allium sativum)</h2>
       <h3>Overview</h3>
-      <p>
-        Garlic is well known for its potent antibacterial and cardiovascular benefits.
-        It contains allicin, which has strong antimicrobial and blood pressure-lowering effects.
-      </p>
+      <p>Garlic is widely studied for its cardiovascular and antimicrobial properties.</p>
       <h3>Plant Care</h3>
       <ul>
-        <li>Plant in fall or early spring in well-drained soil.</li>
-        <li>Full sun exposure preferred.</li>
-        <li>Keep soil moist during growing season.</li>
+        <li>Full sun, well-drained soil.</li>
+        <li>Plant cloves in fall or spring.</li>
+        <li>Keep soil moist but not soggy.</li>
       </ul>
       <h3>Medicinal Uses & Recipes</h3>
-      <p><strong>Garlic Infusion:</strong> Use raw garlic or infusions to support heart health and fight infections.</p>
-      <h3>Scientific Benefits</h3>
+      <p>Raw or cooked garlic may help lower cholesterol and blood pressure.</p>
+      <h3>Scientific Sources</h3>
       <ul>
-        <li>Garlic reduces blood pressure and cholesterol levels. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4103721/" target="_blank" class="source-link">[14]</a></li>
-        <li>Has antimicrobial and immune-boosting effects. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6266785/" target="_blank" class="source-link">[15]</a></li>
-      </ul>
-      <h3>Growing Timeline</h3>
-      <ul>
-        <li>Week 1: Plant garlic cloves in soil.</li>
-        <li>Week 2-3: Shoots emerge.</li>
-        <li>Week 12: Bulbs develop underground.</li>
-        <li>Week 20-24: Harvest mature bulbs.</li>
+        <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4103721/" target="_blank" rel="noopener noreferrer">Garlic & heart health - NCBI</a></li>
       </ul>
     </section>
 
-    <!-- You can continue adding more detailed sections for other plants here following the same format -->
-
-    <!-- Quiz Section -->
+    <!-- Medicinal Gardening Quiz -->
     <section class="quiz" aria-label="Medicinal Gardening Quiz">
       <h2>Medicinal Gardening Quiz</h2>
 
       <div class="question">
         <p>1. What is mint commonly used for?</p>
-        <label><input type="radio" name="q1" value="a" /> Headaches</label>
-        <label><input type="radio" name="q1" value="b" /> Digestion</label>
-        <label><input type="radio" name="q1" value="c" /> Cough</label>
+        <label><input type="radio" name="q1" value="a" />Headaches</label>
+        <label><input type="radio" name="q1" value="b" />Digestion</label>
+        <label><input type="radio" name="q1" value="c" />Cough</label>
       </div>
 
       <div class="question">
         <p>2. Which plant is best for burns and skin treatment?</p>
-        <label><input type="radio" name="q2" value="a" /> Mint</label>
-        <label><input type="radio" name="q2" value="b" /> Ginger</label>
-        <label><input type="radio" name="q2" value="c" /> Aloe Vera</label>
+        <label><input type="radio" name="q2" value="a" />Mint</label>
+        <label><input type="radio" name="q2" value="b" />Ginger</label>
+        <label><input type="radio" name="q2" value="c" />Aloe Vera</label>
       </div>
 
       <div class="question">
         <p>3. Ginger is known to help with:</p>
-        <label><input type="radio" name="q3" value="a" /> Sleep</label>
-        <label><input type="radio" name="q3" value="b" /> Inflammation</label>
-        <label><input type="radio" name="q3" value="c" /> Headaches</label>
+        <label><input type="radio" name="q3" value="a" />Sleep</label>
+        <label><input type="radio" name="q3" value="b" />Inflammation</label>
+        <label><input type="radio" name="q3" value="c" />Headaches</label>
       </div>
 
-      <button class="submit-btn" aria-label="Submit quiz answers" type="button" onclick="submitQuiz()">Submit Answers</button>
-      <div id="quiz-result" class="quiz-result" role="alert" aria-live="polite"></div>
+      <button class="submit-btn" type="button">Submit Quiz</button>
+      <div class="quiz-result" role="alert" aria-live="polite"></div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Nitish Vankina</p>
+    &copy; 2025 Nitish Vankina
   </footer>
 
   <script>
-    // Tab switching logic
-    const tabs = document.querySelectorAll('.tab-btn');
-    const sections = document.querySelectorAll('.plant-section');
+    // Wrap code in try-catch to log any unexpected errors to console
+    try {
+      const tabButtons = document.querySelectorAll('nav .tab-btn:not(.more-btn)');
+      const moreBtn = document.querySelector('.more-btn');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+      const dropdownItems = document.querySelectorAll('.dropdown-item');
+      const plantSections = document.querySelectorAll('section.plant-section');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active states
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        sections.forEach(s => {
-          s.classList.remove('active');
-          s.setAttribute('aria-hidden', 'true');
-        });
-
-        // Add active to clicked tab
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
-        // Show related section
-        const target = tab.getAttribute('aria-controls');
-        const activeSection = document.getElementById(target);
-        if (activeSection) {
-          activeSection.classList.add('active');
-          activeSection.setAttribute('aria-hidden', 'false');
-          activeSection.focus();
+      // Toggle dropdown menu on More Plants button click
+      moreBtn.addEventListener('click', () => {
+        try {
+          const expanded = moreBtn.getAttribute('aria-expanded') === 'true' || false;
+          moreBtn.setAttribute('aria-expanded', !expanded);
+          dropdownMenu.classList.toggle('show');
+        } catch (e) {
+          console.error('Error toggling dropdown:', e);
         }
       });
-    });
 
-    // More plants dropdown buttons
-    const dropdownButtons = document.querySelectorAll('#more-plants-list button');
-    dropdownButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const plantId = btn.getAttribute('data-target');
-
-        // Remove active from all tabs and sections
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        sections.forEach(s => {
-          s.classList.remove('active');
-          s.setAttribute('aria-hidden', 'true');
-        });
-
-        // Activate the chosen plant
-        const plantSection = document.getElementById(plantId);
-        if (plantSection) {
-          plantSection.classList.add('active');
-          plantSection.setAttribute('aria-hidden', 'false');
-          plantSection.focus();
+      // Close dropdown if clicking outside
+      document.addEventListener('click', (e) => {
+        try {
+          if (!moreBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            moreBtn.setAttribute('aria-expanded', false);
+            dropdownMenu.classList.remove('show');
+          }
+        } catch (e) {
+          console.error('Error closing dropdown on outside click:', e);
         }
       });
-    });
 
-    // Quiz submission logic
-    function submitQuiz() {
-      const answers = {
-        q1: 'b',
-        q2: 'c',
-        q3: 'b'
-      };
-      let score = 0;
-      for (const q in answers) {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) {
-          score++;
+      function activatePlant(plantName) {
+        try {
+          if (!plantName) {
+            console.warn('activatePlant called with empty plantName');
+            return;
+          }
+          // Deactivate all tab buttons (including More Plants button)
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          dropdownItems.forEach(item => item.classList.remove('active'));
+          moreBtn.classList.remove('active');
+          moreBtn.setAttribute('aria-selected', 'false');
+
+          // Hide all plant sections
+          plantSections.forEach(section => section.classList.remove('active'));
+
+          // Activate the matching tab button if it exists
+          const mainTab = document.querySelector(`nav button[data-plant="${plantName}"]`);
+          if (mainTab) {
+            mainTab.classList.add('active');
+            mainTab.setAttribute('aria-selected', 'true');
+          } else {
+            // If no main tab, highlight More Plants button and the dropdown item
+            moreBtn.classList.add('active');
+            moreBtn.setAttribute('aria-selected', 'true');
+            const dropdownItem = document.querySelector(`.dropdown-item[data-plant="${plantName}"]`);
+            if (dropdownItem) {
+              dropdownItem.classList.add('active');
+            } else {
+              console.warn(`No tab or dropdown item found for plant "${plantName}"`);
+            }
+          }
+
+          // Show the corresponding plant section
+          const plantSection = document.getElementById(plantName);
+          if (plantSection) {
+            plantSection.classList.add('active');
+            plantSection.focus();
+          } else {
+            console.warn(`No plant section found with id "${plantName}"`);
+          }
+        } catch (e) {
+          console.error('Error in activatePlant:', e);
         }
       }
-      const result = document.getElementById('quiz-result');
-      result.style.display = 'block';
-      if (score === 3) {
-        result.textContent = `Excellent! You scored ${score} out of 3. You know your medicinal plants well!`;
-      } else if (score === 2) {
-        result.textContent = `Good job! You scored ${score} out of 3. A little more study and you'll master medicinal gardening.`;
-      } else {
-        result.textContent = `Keep learning! You scored ${score} out of 3. Study more about these helpful plants.`;
-      }
+
+      // Add click event for main tab buttons
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          try {
+            dropdownMenu.classList.remove('show');
+            moreBtn.setAttribute('aria-expanded', false);
+            activatePlant(btn.getAttribute('data-plant'));
+          } catch (e) {
+            console.error('Error clicking main tab button:', e);
+          }
+        });
+      });
+
+      // Add click event for dropdown items
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+          try {
+            dropdownMenu.classList.remove('show');
+            moreBtn.setAttribute('aria-expanded', false);
+            activatePlant(item.getAttribute('data-plant'));
+          } catch (e) {
+            console.error('Error clicking dropdown item:', e);
+          }
+        });
+      });
+
+      // Quiz logic
+      const submitBtn = document.querySelector('.submit-btn');
+      const quizResult = document.querySelector('.quiz-result');
+
+      submitBtn.addEventListener('click', () => {
+        try {
+          const answers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'b'
+          };
+          let score = 0;
+          Object.keys(answers).forEach(q => {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === answers[q]) score++;
+          });
+          quizResult.style.display = 'block';
+          quizResult.textContent = `You scored ${score} out of 3. ${score === 3 ? "Great job!" : "Keep learning!"}`;
+        } catch (e) {
+          console.error('Error evaluating quiz:', e);
+        }
+      });
+    } catch (e) {
+      console.error('Unexpected error in main script:', e);
     }
   </script>
 </body>
