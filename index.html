@@ -2,37 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nitish Vankina Portfolio</title>
-  <meta name="description" content="Learn about medicinal plants like mint, ginger, and aloe vera through Nitish Vankina's personal gardening experiments. Includes a quiz, care tips, timeline, recipes, and more." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medical Gardening Guide</title>
+  <meta name="description" content="Comprehensive guide to medicinal gardening. Learn how to grow and use medicinal plants like mint, ginger, and aloe vera." />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background-color: #f7f7f7;
       color: #333;
       line-height: 1.6;
     }
-
     header {
       background-color: #222;
       color: white;
       padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
-
     header h1 {
       margin: 0;
       font-size: 1.8rem;
     }
-
     nav a {
       color: white;
       margin-left: 1.5rem;
@@ -40,129 +36,35 @@
       font-weight: bold;
       transition: color 0.3s;
     }
-
     nav a:hover {
       color: #00ffb3;
     }
-
     section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
       background: white;
-      margin-bottom: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
       border-radius: 0.6rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
     h2 {
       border-bottom: 3px solid #00b386;
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
       color: #007a53;
     }
-
     h3 {
       color: #007a53;
       margin-top: 1.5rem;
     }
-
     ul {
       list-style-type: disc;
       padding-left: 1.5rem;
     }
-
-    .interest-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .interest-item {
-      flex: 1 1 200px;
-      background-color: #e8f5f2;
-      padding: 1rem;
-      border: 1px solid #a3d9cc;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.3s;
-      text-align: center;
-      font-weight: 600;
-      color: #004d40;
-    }
-
-    .interest-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0,123,86,0.3);
-    }
-
-    button {
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      margin-top: 1rem;
-      background-color: #00b386;
-      color: white;
-      border: none;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #008f6b;
-    }
-
-    .question {
-      margin-bottom: 1.2rem;
-      background: #f0fdf9;
-      border-left: 5px solid #00b386;
-      padding: 1rem 1.2rem;
-      border-radius: 0.3rem;
-    }
-
-    input[type="radio"] {
-      margin-right: 0.6rem;
-      cursor: pointer;
-    }
-
-    label {
-      cursor: pointer;
-      display: block;
-      margin-bottom: 0.4rem;
-      font-size: 1rem;
-    }
-
-    .quiz-result {
-      font-weight: bold;
-      margin-top: 1rem;
-      padding: 1rem;
-      background-color: #d4edda;
-      color: #155724;
-      border-radius: 0.3rem;
-      display: none;
-    }
-
-    .feedback {
-      margin-top: 0.5rem;
-      font-style: italic;
-      color: #004d40;
-    }
-
-    footer {
-      text-align: center;
-      background-color: #222;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    /* Additional styling for new sections */
     .timeline {
       list-style-type: none;
       padding: 0;
     }
-
     .timeline li {
       background: #e0f7f4;
       margin: 0.5rem 0;
@@ -172,146 +74,146 @@
       font-weight: 600;
       color: #004d40;
     }
-
+    .question {
+      margin-bottom: 1.2rem;
+      background: #f0fdf9;
+      border-left: 5px solid #00b386;
+      padding: 1rem 1.2rem;
+      border-radius: 0.3rem;
+    }
+    input[type="radio"] {
+      margin-right: 0.6rem;
+      cursor: pointer;
+    }
+    label {
+      cursor: pointer;
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: #00b386;
+      color: white;
+      border: none;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background-color: #008f6b;
+    }
+    .quiz-result {
+      font-weight: bold;
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #d4edda;
+      color: #155724;
+      border-radius: 0.3rem;
+      display: none;
+    }
     .faq-item {
       margin-bottom: 1rem;
     }
-
     .faq-item strong {
       color: #007a53;
     }
-
-    .download-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: #00b386;
-      color: white;
-      border-radius: 0.3rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-
-    .download-link:hover {
-      background-color: #008f6b;
-    }
-
-    /* Responsive tweaks */
+    /* Responsive */
     @media (max-width: 600px) {
-      .interest-item {
-        flex: 1 1 100%;
+      nav {
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+      nav a {
+        margin: 0 0.8rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Nitish Vankina</h1>
+    <h1>Medical Gardening Guide</h1>
     <nav>
-      <a href="#interests">Interests</a>
-      <a href="#awards">Awards</a>
-      <a href="#projects">Projects</a>
+      <a href="#plants">Medicinal Plants</a>
       <a href="#plant-care">Plant Care</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#recipes">Recipes</a>
+      <a href="#timeline">Growing Timeline</a>
+      <a href="#recipes">Recipes & Uses</a>
       <a href="#faq">FAQ</a>
-      <a href="#quiz">Quiz Yourself</a>
-      <a href="#contact">Contact</a>
+      <a href="#quiz">Quiz</a>
     </nav>
   </header>
 
-  <section id="interests" class="interests">
-    <h2>Interests</h2>
-    <div class="interest-box">
-      <div class="interest-item">Foil fencing</div>
-      <div class="interest-item">Coding</div>
-      <div class="interest-item">Raspberry Pi projects</div>
-      <div class="interest-item">Video games</div>
-      <div class="interest-item">Reading</div>
-      <div class="interest-item">Watching shows and movies</div>
-      <div class="interest-item">Playing chess</div>
-    </div>
-  </section>
+  <section id="plants">
+    <h2>Medicinal Plants Overview</h2>
+    <h3>Mint</h3>
+    <p>Mint is well-known for aiding digestion and reducing nausea. It grows easily in containers or gardens and is commonly used in teas and culinary dishes.</p>
 
-  <section id="awards" class="awards">
-    <h2>Awards</h2>
-    <ul>
-      <li>FBLA Regionals Finalist</li>
-      <li>Honor Roll, All Quarters</li>
-      <li>Science Fair Participant 2024</li>
-    </ul>
-  </section>
+    <h3>Ginger</h3>
+    <p>Ginger contains anti-inflammatory properties and helps soothe sore throats and digestive issues. It can be grown indoors in pots and harvested after several weeks.</p>
 
-  <section id="projects" class="project">
-    <h2>Project Summaries</h2>
-    <h3>Medicinal Gardening</h3>
-    <p><strong>Mint:</strong> Mint is a widely grown herb known for its digestive benefits. I researched its use in teas and foods and tested peppermint oil and mint tea on people after meals. The results showed improved digestion and reduced bloating for many.</p>
-
-    <p><strong>Ginger:</strong> Ginger has strong anti-inflammatory properties and helps soothe digestion and sore throats. I experimented with ginger water taken before meals, which helped reduce stomach discomfort for most participants. Growing ginger indoors was also successful.</p>
-
-    <p><strong>Aloe Vera:</strong> Aloe vera is commonly used for skin healing, especially burns and irritations. I applied aloe gel from fresh leaves to minor skin redness and saw faster recovery compared to untreated areas. I also learned how to propagate aloe from a leaf cutting.</p>
-
-    <p><em>I designed and conducted all tests, documented results carefully, and maintained all the plants throughout the project.</em></p>
+    <h3>Aloe Vera</h3>
+    <p>Aloe vera is famous for its skin healing properties, especially for burns and irritations. It is a succulent that requires little water and can be propagated from leaf cuttings.</p>
   </section>
 
   <section id="plant-care">
     <h2>Plant Care Tips</h2>
     <h3>Mint</h3>
-    <p>Mint grows best in partial shade with moist, well-drained soil. Water regularly but avoid waterlogging. Prune frequently to encourage bushier growth.</p>
+    <p>Partial shade, moist but well-drained soil, regular pruning for bushy growth.</p>
 
     <h3>Ginger</h3>
-    <p>Ginger thrives in warm, humid conditions with indirect sunlight. Keep soil consistently moist but not soggy. Plant rhizomes horizontally about 2 inches deep.</p>
+    <p>Warm, humid environment with indirect sunlight. Keep soil moist but not soggy.</p>
 
     <h3>Aloe Vera</h3>
-    <p>Aloe vera prefers bright, indirect light and dry conditions. Water sparingly, allowing soil to dry completely between waterings. Use well-draining cactus soil for best results.</p>
+    <p>Bright, indirect light, well-draining soil, water sparingly and allow soil to dry between waterings.</p>
   </section>
 
   <section id="timeline">
-    <h2>Plant Growing Timeline</h2>
+    <h2>Growing Timeline</h2>
     <ul class="timeline">
-      <li><strong>Week 1:</strong> Planted mint, ginger, and aloe vera cuttings/roots.</li>
-      <li><strong>Week 2-3:</strong> Observed first sprouting on mint and ginger.</li>
-      <li><strong>Week 4:</strong> Aloe vera leaf formed a callus and started root growth.</li>
-      <li><strong>Week 6:</strong> Mint and ginger started showing healthy leaf growth.</li>
-      <li><strong>Week 8:</strong> Began harvesting mint leaves and testing teas.</li>
-      <li><strong>Week 10:</strong> Tested aloe gel on skin irritations and recorded results.</li>
+      <li><strong>Week 1:</strong> Plant seeds or cuttings.</li>
+      <li><strong>Week 2-3:</strong> Initial sprouting of mint and ginger.</li>
+      <li><strong>Week 4:</strong> Aloe vera leaf forms callus and roots.</li>
+      <li><strong>Week 6:</strong> Healthy leaf growth visible on mint and ginger.</li>
+      <li><strong>Week 8:</strong> Begin harvesting mint leaves for use.</li>
+      <li><strong>Week 10:</strong> Aloe vera gel tested for skin healing.</li>
     </ul>
   </section>
 
   <section id="recipes">
-    <h2>Medicinal Plant Recipes & Uses</h2>
+    <h2>Medicinal Recipes & Uses</h2>
     <h3>Mint Tea</h3>
-    <p>Steep fresh mint leaves in hot water for 5-7 minutes. Drink after meals to aid digestion and reduce bloating.</p>
+    <p>Steep fresh mint leaves in hot water for 5-7 minutes. Drink after meals to soothe digestion.</p>
 
-    <h3>Ginger Water</h3>
-    <p>Slice fresh ginger and boil in water for 10 minutes. Drink a small cup before meals to help reduce nausea and inflammation.</p>
+    <h3>Ginger Infusion</h3>
+    <p>Boil sliced fresh ginger in water for 10 minutes. Drink before meals to reduce nausea.</p>
 
     <h3>Aloe Vera Gel</h3>
-    <p>Cut a thick aloe leaf, scoop out the gel, and apply directly to minor burns or skin irritations to soothe and promote healing.</p>
+    <p>Extract gel from fresh aloe leaf and apply topically to minor burns or skin irritations.</p>
   </section>
 
   <section id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
-      <strong>Q: Can mint be grown indoors?</strong>
-      <p>A: Yes, mint grows well indoors in pots with indirect sunlight and regular watering.</p>
+      <strong>Can mint be grown indoors?</strong>
+      <p>Yes, mint thrives indoors with indirect sunlight and regular watering.</p>
     </div>
     <div class="faq-item">
-      <strong>Q: How long does it take for ginger to grow?</strong>
-      <p>A: Ginger can take 8-10 weeks before you see significant growth above soil.</p>
+      <strong>How long does ginger take to grow?</strong>
+      <p>Typically 8-10 weeks to visible growth above soil.</p>
     </div>
     <div class="faq-item">
-      <strong>Q: Can I regrow aloe vera from a leaf?</strong>
-      <p>A: Yes, by letting the leaf dry to form a callus before planting, aloe can regrow roots and a new plant.</p>
+      <strong>Can aloe vera be propagated from a leaf?</strong>
+      <p>Yes, by allowing the leaf to form a callus before planting it in soil.</p>
     </div>
     <div class="faq-item">
-      <strong>Q: Are these plants safe for everyone?</strong>
-      <p>A: Generally yes, but always check for allergies or consult a doctor before medicinal use.</p>
+      <strong>Are these plants safe to use medicinally?</strong>
+      <p>Generally yes, but always check for allergies or consult a healthcare provider before use.</p>
     </div>
   </section>
 
-  <section id="quiz" class="quiz">
+  <section id="quiz">
     <h2>Medicinal Gardening Quiz</h2>
 
     <div class="question">
@@ -336,31 +238,18 @@
     </div>
 
     <div class="question">
-      <p>4. Which of these can you regrow from a leaf?</p>
+      <p>4. Which plant can be regrown from a leaf?</p>
       <label><input type="radio" name="q4" value="a">Mint</label>
       <label><input type="radio" name="q4" value="b">Aloe Vera</label>
       <label><input type="radio" name="q4" value="c">Ginger</label>
-    </div>
-
-    <div class="question">
-      <p>5. Where did Nitish volunteer from 2023 to 2025?</p>
-      <label><input type="radio" name="q5" value="a">Asha Jyothi</label>
-      <label><input type="radio" name="q5" value="b">Anna Sudha</label>
-      <label><input type="radio" name="q5" value="c">Library</label>
     </div>
 
     <button onclick="checkQuiz()">Submit Answers</button>
     <p class="quiz-result" id="result"></p>
   </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:mr.freelancer9182@gmail.com">mr.freelancer9182@gmail.com</a></p>
-    <p>Location: Centreville, Virginia</p>
-  </section>
-
   <footer>
-    <p>© 2025 Nitish Vankina. All rights reserved.</p>
+    <p>© 2025 Medical Gardening Guide. All rights reserved.</p>
   </footer>
 
   <script>
@@ -370,9 +259,7 @@
         q2: 'c',
         q3: 'b',
         q4: 'b',
-        q5: 'b'
       };
-
       let score = 0;
       let unanswered = 0;
 
@@ -382,9 +269,7 @@
         for (const radio of radios) {
           if (radio.checked) {
             answered = true;
-            if (radio.value === value) {
-              score++;
-            }
+            if (radio.value === value) score++;
           }
         }
         if (!answered) unanswered++;
@@ -395,7 +280,7 @@
         result.style.color = 'red';
         result.style.backgroundColor = '#f8d7da';
         result.style.display = 'block';
-        result.textContent = `Please answer all questions before submitting.`;
+        result.textContent = 'Please answer all questions before submitting.';
         return;
       }
 
@@ -404,15 +289,15 @@
       result.style.display = 'block';
 
       let message = '';
-      if (score === 5) {
-        message = "Excellent! You really know your medicinal plants.";
-      } else if (score >= 3) {
-        message = "Great job! Just a few things to review.";
+      if (score === 4) {
+        message = "Excellent! You know your medicinal plants well.";
+      } else if (score >= 2) {
+        message = "Good job! Keep learning and growing.";
       } else {
-        message = "Keep learning and try again!";
+        message = "Keep studying and try again!";
       }
 
-      result.textContent = `You scored ${score}/5. ${message}`;
+      result.textContent = `You scored ${score}/4. ${message}`;
     }
   </script>
 </body>
